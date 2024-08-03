@@ -12,5 +12,11 @@ router.get("/profile", authMiddleware, (req, res) =>
 router.put("/profile", authMiddleware, (req, res) =>
   UserController.updateUserProfile(req, res)
 );
+router.post("/address", authMiddleware, (req, res) =>
+  UserController.addAddress(req, res)
+);
+router.get("/address", authMiddleware, (req, res) =>
+  UserController.getAddress(req, res)
+);
 
 export default router;

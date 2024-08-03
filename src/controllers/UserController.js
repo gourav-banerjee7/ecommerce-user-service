@@ -40,6 +40,26 @@ class UserController {
       res.status(400).json({ error: error.message });
     }
   }
+
+  async addAddress(req, res) {
+    try {
+      const userId = req.user.id;
+      const address = await UserService.addAddress(userId, req.body);
+      res.status(201).json(address);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+
+  async getAddress(req, res) {
+    try {
+      const userId = req.user.id;
+      const addresses = await UserService.getAddress(userId);
+      res.status(200).json(addresses);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
 }
 
 export default new UserController();

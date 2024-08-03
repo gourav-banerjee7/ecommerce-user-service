@@ -42,7 +42,16 @@ class UserService {
   }
 
   async updateUserProfile(userId, updateData) {
-    return await UserRepository.updateUser(userId, updateData);
+    await UserRepository.updateUser(userId, updateData);
+    return await UserRepository.getUserById(userId);
+  }
+
+  async addAddress(userId, addressData) {
+    return await UserRepository.addAddress({ userId, ...addressData });
+  }
+
+  async getAddress(userId) {
+    return await UserRepository.getAddress(userId);
   }
 }
 
